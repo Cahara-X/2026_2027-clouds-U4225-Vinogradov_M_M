@@ -68,15 +68,15 @@
 | Фронтенд | Firebase Hosting | Firebase Hosting | Cloud Storage + Cloud CDN |
 | Точка входа | URL Cloud Run | URL Cloud Run | HTTPS Load Balancer + Cloud Armor |
 | API | Cloud Run, min 0 / max 2 | Cloud Run, min 1 / max 5 | Cloud Run, min 2 / max 30 |
-| Обработка проверок | синхронно в API | Pub/Sub + Cloud Run worker | Pub/Sub + Cloud Run worker, max 50 |
+| Обработка проверок | Синхронно в API | Pub/Sub + Cloud Run worker | Pub/Sub + Cloud Run worker, max 50 |
 | LLM | Gemini 2.5 Flash | Gemini 2.5 Flash | Flash-Lite + Flash (роутинг), context caching |
 | БД | Cloud SQL db-f1-micro | Cloud SQL db-g1-small, бэкапы + PITR | Cloud SQL HA 2 vCPU / 7.5 ГБ + read replica |
 | Кеш | — | — | Memorystore Redis |
 | Файлы | Cloud Storage Standard | Cloud Storage Standard | Standard → Nearline через 90 дней |
 | Аутентификация | — | Identity Platform | Identity Platform |
 | Аналитика | — | — | BigQuery |
-| Окружения | одно | prod + staging | dev / staging / prod |
-| Мониторинг | базовый | алерты на ошибки и бюджет | алерты, SLO, дашборды |
+| Окружения | одно | Prod + staging | Dev / staging / prod |
+| Мониторинг | Базовый | Алерты на ошибки и бюджет | Алерты, SLO, дашборды |
 
 ## Экономическая модель
 
@@ -87,7 +87,7 @@
 
 | Статья расходов, USD/мес | Этап 1 | Этап 2 | Этап 3 |
 |---|---:|---:|---:|
-| Cloud Run (api + worker) | 0 (free tier) | ~25 | ~350 |
+| Cloud Run (api + worker) | 0, БЕСПЛАТНО | ~25 | ~350 |
 | Cloud SQL PostgreSQL | ~11 (db-f1-micro) | ~30 (db-g1-small + бэкапы) | ~330 (HA + replica + 100 ГБ SSD) |
 | Cloud Storage | < 1 | ~1 | ~20 (с lifecycle) |
 | Memorystore Redis | — | — | ~60 |
